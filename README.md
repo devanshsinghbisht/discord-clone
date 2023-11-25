@@ -2,11 +2,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, start prisma Studio:
+
+
+### First, start prisma Studio:
+
 ```bash
-
-npm prisma studio
-
+npx prisma studio
 ```
 
 run the development server:
