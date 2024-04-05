@@ -9,9 +9,8 @@ export async function PATCH(
   { params }: { params: { serverId: string } }
 ) {
   try {
-    const { profile } = currentProfile() as unknown as {
-      profile: ProfileDetails;
-    };
+    const profile = await currentProfile();
+    console.log({ profile });
     const { name, imageUrl } = await req.json();
     if (!profile) {
       return new NextResponse("Unauthorized", { status: 401 });
