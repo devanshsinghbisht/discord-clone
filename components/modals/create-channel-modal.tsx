@@ -126,7 +126,7 @@ export const CreateChannelModal = () => {
                     <FormLabel>Channel type</FormLabel>
                     <Select
                       disabled={isLoading}
-                      onValueChang={field.onChange}
+                      onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
                       <FormControl>
