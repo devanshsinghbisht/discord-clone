@@ -19,7 +19,7 @@ interface ServerSearchProps {
     data:
       | {
           icon: React.ReactNode;
-          name: String;
+          name: string;
           id: string;
         }[]
       | undefined;
@@ -54,7 +54,7 @@ export const ServerSearch = ({ data }: ServerSearchProps) => {
       return router.push(`/servers/${params?.serverId}/conversations/${id}`);
     }
     if (type === "channel") {
-      return router.push(`/server/${params?.serverId}/channels/${id}`);
+      return router.push(`/servers/${params?.serverId}/channels/${id}`);
     }
   };
 
@@ -69,13 +69,13 @@ export const ServerSearch = ({ data }: ServerSearchProps) => {
           Search
         </p>
         <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground ml-auto">
-          <span className="text-xs ">CTRL</span>k
+          <span className="text-xs">CTRL</span>K
         </kbd>
       </button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Search all channels and members" />
         <CommandList>
-          <CommandEmpty>NO Results Found</CommandEmpty>
+          <CommandEmpty>No Results found</CommandEmpty>
           {data.map(({ label, type, data }) => {
             if (!data?.length) return null;
             return (

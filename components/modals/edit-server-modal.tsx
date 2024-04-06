@@ -1,9 +1,10 @@
 "use client";
+
 import axios from "axios";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 import {
   Dialog,
@@ -24,8 +25,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/file-upload";
+import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/use-modal-store";
-import { useEffect } from "react";
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -86,12 +87,12 @@ export const EditServerModal = () => {
             Customize your server
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Give your server a personality with a name and image. You can always
-            change it later.
+            Give your server a personality with a name and an image. You can
+            always change it later.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <div className="space-y-8 px-6">
               <div className="flex items-center justify-center text-center">
                 <FormField
@@ -110,6 +111,7 @@ export const EditServerModal = () => {
                   )}
                 />
               </div>
+
               <FormField
                 control={form.control}
                 name="name"

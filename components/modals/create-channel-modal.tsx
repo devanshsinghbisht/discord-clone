@@ -41,7 +41,7 @@ const formSchema = z.object({
       message: "Channel name is required.",
     })
     .refine((name) => name !== "general", {
-      message: "Channel name cannot be 'general",
+      message: "Channel name cannot be 'general'",
     }),
   type: z.nativeEnum(channelType),
 });
@@ -123,7 +123,7 @@ export const CreateChannelModal = () => {
                 name="type"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Channel type</FormLabel>
+                    <FormLabel>Channel Type</FormLabel>
                     <Select
                       disabled={isLoading}
                       onValueChange={field.onChange}

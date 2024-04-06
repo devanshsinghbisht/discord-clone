@@ -62,7 +62,10 @@ export const MembersModal = () => {
           serverId: server?.id,
         },
       });
+
       const response = await axios.delete(url);
+
+      router.refresh();
       onOpen("members", { server: response.data });
     } catch (error) {
       console.log(error);
@@ -80,6 +83,7 @@ export const MembersModal = () => {
           serverId: server?.id,
         },
       });
+
       const response = await axios.patch(url, { role });
 
       router.refresh();
@@ -122,7 +126,7 @@ export const MembersModal = () => {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent side="left">
                         <DropdownMenuSub>
-                          <DropdownMenuSubTrigger className="flex items-center ">
+                          <DropdownMenuSubTrigger className="flex items-center">
                             <ShieldQuestion className="h-4 w-4 mr-2" />
                             <span>Role</span>
                           </DropdownMenuSubTrigger>
@@ -133,7 +137,7 @@ export const MembersModal = () => {
                               >
                                 <Shield className="h-4 w-4 mr-2" />
                                 Guest
-                                {member.role == "GUEST" && (
+                                {member.role === "GUEST" && (
                                   <Check className="h-4 w-4 ml-auto" />
                                 )}
                               </DropdownMenuItem>
@@ -144,7 +148,7 @@ export const MembersModal = () => {
                               >
                                 <ShieldCheck className="h-4 w-4 mr-2" />
                                 Moderator
-                                {member.role == "MODERATOR" && (
+                                {member.role === "MODERATOR" && (
                                   <Check className="h-4 w-4 ml-auto" />
                                 )}
                               </DropdownMenuItem>

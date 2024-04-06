@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 
@@ -54,7 +55,7 @@ export async function DELETE(
     return NextResponse.json(server);
   } catch (error) {
     console.log("[MEMBER_ID_DELETE]", error);
-    return new NextResponse("Internel error", { status: 500 });
+    return new NextResponse("Internal Error", { status: 500 });
   }
 }
 

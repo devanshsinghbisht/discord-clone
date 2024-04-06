@@ -1,27 +1,26 @@
 "use client";
-import { Check, Copy, RefreshCcw } from "lucide-react";
+
+import axios from "axios";
+import { Check, Copy, RefreshCw } from "lucide-react";
 import { useState } from "react";
+
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useModal } from "@/hooks/use-modal-store";
 import { Label } from "@/components/ui/label";
+import { useModal } from "@/hooks/use-modal-store";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import axios from "axios";
 import { useOrigin } from "@/hooks/use-origin";
 
 export const InviteModal = () => {
   const { onOpen, isOpen, onClose, type, data } = useModal();
-
   const origin = useOrigin();
 
   const isModalOpen = isOpen && type === "invite";
-
   const { server } = data;
 
   const [copied, setCopied] = useState(false);
@@ -32,6 +31,7 @@ export const InviteModal = () => {
   const onCopy = () => {
     navigator.clipboard.writeText(inviteUrl);
     setCopied(true);
+
     setTimeout(() => {
       setCopied(false);
     }, 1000);
@@ -43,9 +43,10 @@ export const InviteModal = () => {
       const response = await axios.patch(
         `/api/servers/${server?.id}/invite-code`
       );
+
       onOpen("invite", { server: response.data });
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -85,7 +86,7 @@ export const InviteModal = () => {
             className="text-xs text-zinc-500 mt-4"
           >
             Generate a new link
-            <RefreshCcw className="w-4 h-4 ml-2" />
+            <RefreshCw className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </DialogContent>
