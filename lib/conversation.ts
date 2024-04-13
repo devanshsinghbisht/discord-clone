@@ -7,7 +7,7 @@ export const getOrCreateConversation = async (
   let conversation =
     (await findConversation(memberOneId, memberTwoId)) ||
     (await findConversation(memberTwoId, memberOneId));
-  console.log({ conversation });
+  // console.log({ conversation });
   if (!conversation) {
     conversation = await createNewConversation(memberOneId, memberTwoId);
   }
