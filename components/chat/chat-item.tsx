@@ -58,7 +58,7 @@ export const ChatItem = ({
   socketQuery,
 }: ChatItemProp) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const { onOpen } = useModal();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -244,7 +244,12 @@ export const ChatItem = ({
             )}
             <ActionTooltip label="Delete">
               <Trash
-                onClick={() => {}}
+                onClick={() =>
+                  onOpen("deleteMessage", {
+                    apiUrl: `${socketUrl}/${id}`,
+                    query: socketQuery,
+                  })
+                }
                 className="cursor-pointer ml-auto w-4 h-4 text-zinc-500
                      hover:text-zinc-600 dark:hover:text-zinc-300  transition"
               />
