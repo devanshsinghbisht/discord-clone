@@ -90,6 +90,7 @@ export const ChatItem = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
+      if (values.content === content) return;
       const url = qs.stringifyUrl({
         url: `${socketUrl}/${id}`,
         query: socketQuery,

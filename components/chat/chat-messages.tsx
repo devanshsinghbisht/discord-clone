@@ -44,7 +44,6 @@ export const ChatMessages = ({
   const queryKey = `chat:${chatId}`;
   const addKey = `chat:${chatId}:messages`;
   const updateKey = `chat:${chatId}:messages:update`;
-  useChatSocket({ queryKey, addKey, updateKey });
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useChatQuery({
       queryKey,
@@ -52,6 +51,7 @@ export const ChatMessages = ({
       paramKey,
       paramValue,
     });
+  useChatSocket({ queryKey, addKey, updateKey });
   if (status === "pending") {
     return (
       <div className="flex flex-col flex-1 justify-center items-center">
