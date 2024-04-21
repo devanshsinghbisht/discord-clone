@@ -5,7 +5,7 @@ import { ChatHeader } from "@/components/chat/chat-header";
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 import React from "react";
-import { ChatInput } from "@/components/chat/char-input";
+import { ChatInput } from "@/components/chat/chat-input";
 import { ChatMessages } from "@/components/chat/chat-messages";
 
 interface ChannelIdPageProps {
